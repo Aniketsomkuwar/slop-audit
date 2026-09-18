@@ -20,7 +20,7 @@ DIRECTION
 Each row represents one slop finding:
 
 - **Location**: File path and line number (or component name) where the slop was detected
-- **Rule**: The pattern ID that was violated (V1-V15, T1-T10, C1-C5, L1-L8, M1-M3, P1-P4, I1, Q1-Q8, or X1-X4)
+- **Rule**: The pattern ID that was violated (V1-V21, T1-T18, C1-C11, L1-L13, M1-M18, P1-P9, I1-I6, Q1-Q10, X1-X10, A1-A16, D1-D6, S1-S8, R1-R6, B1-B5, F1-F7, DM1-DM5, H1-H18, E1-E58)
 - **Confidence**: Confirmed / Probable / Candidate / Exempted
   - **Confirmed**: Pattern definitively present, evidence clear
   - **Probable**: Pattern likely present, evidence suggestive
@@ -28,6 +28,28 @@ Each row represents one slop finding:
   - **Exempted**: Pattern intentionally present; communicates real meaning or follows established brand
 - **Evidence**: Brief citation of the specific line/code causing the issue; or explanation of why exempted
 - **Action**: Specific remediation step; or "verify at width X" for candidates; or "retain — exempted" for exempted items
+
+### Evidence class — label every finding
+
+Confidence says how sure you are. Evidence class says what the claim rests on, and the two are
+independent: a Confirmed finding can rest on a deterministic check or on a direct reading, and the
+difference matters to whoever acts on it. Tag each material statement with exactly one:
+
+| Class | Meaning |
+|---|---|
+| **Observed** | Directly present in the material supplied |
+| **Measured** | Produced by a deterministic check (contrast ratio, computed style, typecheck, lint) |
+| **Inferred** | Reasoned from evidence; say plainly that it is an inference |
+| **Unknown** | Not verifiable from what was supplied. Scope was not inspected, or the runtime was not exercised |
+
+Never promote inferred or unknown material into a factual claim. **An unknown item earns no
+passing credit merely because it was not visible — silence is not compliance.** Where the runtime
+was not exercised, E7, E8, E18, and E46 stay Candidate rather than Confirmed, however the source
+reads.
+
+This is also the authorship boundary. Report the observable defect; never an inference about what
+wrote the code. Generated code can be clean, and hand-written code can carry every E-ID. Report
+the E-IDs, not the gestalt.
 
 ## Needs Rendered Verification
 
@@ -73,6 +95,7 @@ Include:
 - Horizontal overflow check (any horizontal scroll detected?)
 - Cross-browser checks if applicable
 - Performance notes if relevant
+- **Source checks**: grep pass run (which signatures), boundary pass run (client→server, server→database, input→DOM, parameter→redirect), and which E-IDs were actively scanned versus left **Unknown**. State the stack you scanned — an E-ID reported against the wrong stack is a false positive
 
 ---
 

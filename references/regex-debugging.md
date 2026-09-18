@@ -15,7 +15,7 @@ When scanning HTML/CSS files for slop patterns, regex groups need careful handli
 - **Fix**: Use appropriate anchors (`^` for start, `\A` for string start) and check match before accessing groups
 
 ### Cross-platform Path Handling
-- **Problem**: Scanning files across WSL/Windows paths (`/home/dev/` vs `Z:\myskills\`)
+- **Problem**: Scanning files across mixed POSIX/Windows path styles (`/mnt/c/project/` vs `C:\project\`)
 - **Fix**: Use `Path.home()` for user directory, `Path()` for relative paths, avoid hardcoded drive letters
 - **Verification**: After `cp -r`, always verify with `ls -laR` and test-scan the copied directory
 

@@ -22,22 +22,25 @@ Standards for evaluating content quality and identifying AI slop, integrated fro
 
 ## Remediation Guidance
 
-When slop is detected, follow the 6-stage fix order:
+When slop is detected, follow the 8-stage fix order:
 
-1. **Broken behavior, accessibility, overflow, readability** — Fix critical issues first
-2. **Information architecture and unsupported content** — Remove redundant/unnecessary sections
+1. **Broken behavior, accessibility, overflow, readability, correctness, false claims** — Fix critical issues first. Q9 (broken JS contract) and H15 (fabricated venue claim) are blockers
+2. **Information architecture and unsupported content** — Remove redundant/unnecessary sections, ungraded embeds, unscrimmed video, hover-gated content
 3. **Repeated page templates, card anatomy, container depth** — Address system-level repetition
 4. **Type hierarchy, spacing rhythm, color roles** — Apply consistent typography and spacing
 5. **Decorative borders, gradients, glows, radii, icons, motion** — Remove decorative defaults without purpose
 6. **Copy cadence and redundant labels** — Fix formulaic copy patterns
+7. **Imagery and placeholder issues** — Assets, AI artifacts, crops, media ratios
+8. **Motion and layout violations** — Scroll-fade, uniform duration, reduced-motion, staggered reveals
 
 ## Tracking
 
-All detected slop should be logged in `~/.hermes/slop-tracker/slop-log.json` with:
+All detected slop should be logged in `./.slop-tracker/slop-log.json` (in the scanned project's working directory) with:
 - File path and line number
-- Pattern ID (V1-V15, T1-T10, C1-C5, L1-L8, M1-M3, P1-P4, I1, Q1-Q8)
+- Pattern ID (V1-V21, T1-T18, C1-C11, L1-L13, M1-M18, P1-P9, I1-I6, Q1-Q10, X1-X10, A1-A16, D1-D6, S1-S8, R1-R6, B1-B5, F1-F7, DM1-DM5, H1-H18, E1-E58)
 - Confidence level (Confirmed/Probable/Candidate)
-- Severity (Critical/High/Medium/Low)
+- Evidence class (Observed/Measured/Inferred/Unknown) — what the claim rests on, separate from how sure you are. Never promote inferred or unknown material into a factual claim, and never infer authorship from style alone
+- Severity (blocker/major/nit)
 - Evidence: source line citation
 - Remediation action taken
 - Status: pending/reviewed/removed
