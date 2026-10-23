@@ -1,7 +1,7 @@
 ---
 name: slop-audit
-description: Detect and flag AI-generated low-quality or misleading content (slop) in UI and code. Runs a 4-pass scan — quality failures, 245 catalogued patterns (V/T/C/L/M/P/I/Q/X/A/D/S/R/B/F/DM/H/E), composition checks, source pass — tracks findings in slop-log.json with confidence, severity and auto-fix flags, applies an 8-stage fix order, and gates delivery on the pre-emit checklist in references/design-spec.md (motion tokens, OKLCH colour rules, type roles). Core objective across all domains: flag low-effort AI-template tropes, boilerplate Bootstrap/SaaS defaults, and unstyled third-party widgets. Use when auditing a codebase or frontend for generic AI-generated design, reviewing UI output for slop, checking motion quality (transition: all, ease-in entrances, animated high-frequency actions, scale(0) entrances), scanning source code for React/TypeScript slop (fetch-in-useEffect, uncleaned effects, any/as/! escapes, dangerouslySetInnerHTML, secrets in the client bundle, god components, array-index keys, class soup), checking a refactor for broken JS contracts (Q9), or when the target is luxury hospitality, fine dining, or a destination venue (activates the H1-H18 domain catalog: card-grid and price-pill aggregation, retail menu chrome, fabricated venue claims, signature footer, graded embeds, page-archetype uniformity).
-version: "3.5.0"
+description: Detect and flag AI-generated low-quality or misleading content (slop) in UI and code. Runs a 4-pass scan — quality failures, 245 catalogued patterns (V/T/C/L/M/P/I/Q/X/A/D/S/R/B/F/DM/H/E), composition checks, source pass — tracks findings in slop-log.json with confidence, severity and auto-fix flags, applies an 8-stage fix order, and gates delivery on the pre-emit checklist in references/design-spec.md (motion tokens, OKLCH colour rules, type roles). Core objective across all domains: flag low-effort AI-template tropes, boilerplate Bootstrap/SaaS defaults, and unstyled third-party widgets. Use when auditing a codebase or frontend for generic AI-generated design, reviewing UI output for slop, checking motion quality (transition: all, ease-in entrances, animated high-frequency actions, scale(0) entrances), scanning source code for React/TypeScript slop (fetch-in-useEffect, uncleaned effects, any/as/! escapes, dangerouslySetInnerHTML, secrets in the client bundle, god components, array-index keys, class soup), checking a refactor for broken JS contracts (Q9), or when the target is luxury hospitality, fine dining, or a destination venue (activates the H1-H18 domain catalog: card-grid and price-pill aggregation, retail menu chrome, fabricated venue claims, signature footer, graded embeds, page-archetype uniformity). Includes the 38-rule purpose gate on the audit side, plus copywriting, accessibility/mobile and code-comment checks.
+version: "3.6.0"
 argument-hint: "[--clear] [--list] [--scan PATH]"
 allowed-tools:
   - Read
@@ -13,7 +13,7 @@ allowed-tools:
 ---
 
 <objective>
-Provide comprehensive functionality to identify, track, and manage AI-generated content that may be low-quality, repetitive, or misleading — commonly referred to as "AI slop". This skill helps maintain content quality by detecting slop patterns, tracking them persistently with severity scoring and auto-fix tagging, and offering remediation actions. Extends the pass-based scan system with new categories (Imagery I2-I6, Motion M4-M18, Copy P5-P9, Accessibility A1-A16, Design-Token D1-D6), severity-based trending scores, and cross-skill debt-integration. Integrates lessons from anti-ui-slop (ritmex-skills), anti-slop (miqdadbadjer/anti-slop), and the motion principles popularised by Emil Kowalski (transform/opacity-only, named transitions, duration scaled to distance and frequency). Adds six generic patterns valid in every domain — V18 border-as-hierarchy crutch, V19 ungraded third-party embed, V20 unscrimmed ambient video, L10 default 50/50 split reflex, F7 hover-locked essential data, and Q9 contract-breaking refactor (blocker, Stage 1) — the H13-H18 hospitality block, a generic↔hospitality mapping, a section-by-section archetype ledger, and an explicit clause that H15 (fabricated venue facts) has no exemption and outranks every visual finding. v3.4.0 appends 17 more generic patterns — motion M9-M13 (blanket `transition: all`, animated high-frequency actions, ease-in entrances, motion-only state indication, untuned easing curve), colour C7-C10 (pure black/white surfaces, zero-chroma neutrals, full-chroma dark fills, unassigned colour roles), typography T16-T18 (proportional numerals in tabular context, untracked uppercase labels, no modular scale), layout L11-L13 (orphan grid cells, above-fold hero overflow, CTA competition), composition X5-X6 (page-level archetype uniformity, no visual anchor) — and pairs the catalog with `references/design-spec.md`, the construction-side workflow, motion/colour/type token tables, and blocking pre-emit gate. v3.5.0 adds the **source-code surface**: a new Engineering category E1-E58 covering React state and effects, data fetching, lifecycle and leaks, component architecture, TypeScript quality, markup and styling, security and privacy hygiene, performance and framework handling, testing and project structure, and form ownership — plus A9-A16 (code-level accessibility: clickable divs, positive tabindex, missing focus traps, unlabelled icon controls, unassociated errors), C11 (premium-consumer palette reflex), M14-M18 (physical motion: `scale(0)` entrances, keyframes where a transition belongs, center-scaled popovers, compositor-breaking technique, ungated hover motion), V21 (geometric mask faking an organic cutout), Q10 (unthemed browser surfaces), X7-X10 (unbroken zigzag, split-header reflex, unearned production chrome, numbered-pagination chrome). Paired with `references/code-slop-guide.md` — grep signatures, per-framework equivalents, and the enforcement checklist.
+Provide comprehensive functionality to identify, track, and manage AI-generated content that may be low-quality, repetitive, or misleading — commonly referred to as "AI slop". This skill helps maintain content quality by detecting slop patterns, tracking them persistently with severity scoring and auto-fix tagging, and offering remediation actions. Extends the pass-based scan system with new categories (Imagery I2-I6, Motion M4-M18, Copy P5-P9, Accessibility A1-A16, Design-Token D1-D6), severity-based trending scores, and cross-skill debt-integration. Integrates lessons from anti-ui-slop (ritmex-skills), anti-slop (miqdadbadjer/anti-slop), and the motion principles popularised by Emil Kowalski (transform/opacity-only, named transitions, duration scaled to distance and frequency). Adds six generic patterns valid in every domain — V18 border-as-hierarchy crutch, V19 ungraded third-party embed, V20 unscrimmed ambient video, L10 default 50/50 split reflex, F7 hover-locked essential data, and Q9 contract-breaking refactor (blocker, Stage 1) — the H13-H18 hospitality block, a generic↔hospitality mapping, a section-by-section archetype ledger, and an explicit clause that H15 (fabricated venue facts) has no exemption and outranks every visual finding. v3.4.0 appends 17 more generic patterns — motion M9-M13 (blanket `transition: all`, animated high-frequency actions, ease-in entrances, motion-only state indication, untuned easing curve), colour C7-C10 (pure black/white surfaces, zero-chroma neutrals, full-chroma dark fills, unassigned colour roles), typography T16-T18 (proportional numerals in tabular context, untracked uppercase labels, no modular scale), layout L11-L13 (orphan grid cells, above-fold hero overflow, CTA competition), composition X5-X6 (page-level archetype uniformity, no visual anchor) — and pairs the catalog with `references/design-spec.md`, the construction-side workflow, motion/colour/type token tables, and blocking pre-emit gate. v3.5.0 adds the **source-code surface**: a new Engineering category E1-E58 covering React state and effects, data fetching, lifecycle and leaks, component architecture, TypeScript quality, markup and styling, security and privacy hygiene, performance and framework handling, testing and project structure, and form ownership — plus A9-A16 (code-level accessibility: clickable divs, positive tabindex, missing focus traps, unlabelled icon controls, unassociated errors), C11 (premium-consumer palette reflex), M14-M18 (physical motion: `scale(0)` entrances, keyframes where a transition belongs, center-scaled popovers, compositor-breaking technique, ungated hover motion), V21 (geometric mask faking an organic cutout), Q10 (unthemed browser surfaces), X7-X10 (unbroken zigzag, split-header reflex, unearned production chrome, numbered-pagination chrome). Paired with `references/code-slop-guide.md` — grep signatures, per-framework equivalents, and the enforcement checklist. v3.6.0 adds the 38-rule purpose gate, copywriting, accessibility/mobile, app-screen and code-comment references, plus a WCAG contrast checker.
 </objective>
 
 <role>
@@ -78,6 +78,22 @@ Check for issues that reduce accessibility, readability, robustness, or performa
 - Above-the-fold hero overflow (L12): at 1440×900 the hero headline or primary CTA falls below the fold, or the header exceeds ~80px or wraps to a second row
 - Blanket `transition: all` (M9): transition declared on every property rather than the properties meant to animate — animates unintended properties and makes timing unpredictable. Sibling of M2 (layout-property animation); a blanket transition usually hides one
 
+**Accessibility depth** (full definitions and the contrast table in `references/accessibility-mobile.md`):
+- Unverified contrast: every text pairing must be checked by `references/contrast-check.py`, the formula, or the reference table, including the worst point of text over media. Never assert a pairing passes by eye
+- Non-text contrast below 3:1 on component boundaries, icons, focus rings, or chart segments
+- Keyboard: unreachable controls, broken tab order, no Escape close, `outline: none` without a replacement
+- Color-only status: success, error, or selection communicated by hue alone
+- Zoom: text clipped or forcing horizontal scroll at 200%
+- Mobile keyboard covering a focused input
+- Targets below 44x44 px, or adjacent targets with no spacing
+- Missing or uninformative empty, loading, and error states (a bare spinner, "No data available")
+
+**Rule-gate checks** (report `R-XX` beside the pattern ID; full rule set in `references/rule-gate.md`):
+- Hard Gate R-02, R-03, R-17, R-18, R-23 to R-28, R-32 to R-38: any hit is a blocker or major, never a nit
+- Purpose-Gate R-01, R-04, R-06 to R-10, R-12 to R-14, R-19, R-22: the technique is allowed only with a written reason and within its dose cap
+- Quality Locks R-05, R-11, R-15, R-16, R-20, R-21, R-29 to R-31: consistency failures, usually major
+- Liveliness: ENERGY / RHYTHM / MOTION declared and consistent; one focal point, one accent, one identity motif; otherwise the audit reports a direction failure even when no pattern fires
+
 **Source-level failures** (read the code, not the render — full detail in `references/code-slop-guide.md`):
 - Uncleaned effect (E14-E17): timer, interval, event listener, subscription, or object URL with no cleanup — keeps firing and keeps its closure alive after unmount
 - Unguarded async (E7, E8, E12, E18): fetch or promise resolving into an unmounted tree, no abort, no error path
@@ -90,7 +106,7 @@ Check for issues that reduce accessibility, readability, robustness, or performa
 - `console.log` of user data, tokens, or response bodies left in shipped code (E40)
 
 ### Pass 2: Slop Signals (Catalogued Patterns)
-Check for 245 AI slop patterns across categories:
+Check for 245 AI slop patterns across categories. Copy findings also run the deeper pass in `references/copywriting.md` (empty vocabulary, significance inflation, weasel attribution, chatbot closers, actorless passive, rule of three, staccato runs, fabricated specifics, hedging), and app screens run the checks in `references/app-comments.md`:
 
 #### Visual Details
 - V1: Border accent on rounded element (>=2px border + >=12px radius)
@@ -253,8 +269,16 @@ Detection is source-level; no render required for H1-H7, H13-H15 except H4/H11/H
 - X9: Unearned production chrome (version labels in the hero, scroll cues, decorative status dots, locale/time/weather strips, decoration text strips, floating top-right sub-text, photo-credit captions, version footers, micro-meta-sentences, generic step labels). Delete unless the item carries real, decision-relevant information — this chrome is what makes a page read as a demo rather than a product
 - X10: Numbered-pagination chrome (`01 / 4` counters, scoring bars with filled tracks, step indicators on content that is not a real sequence). See L5 — numbering only where order itself is information
 
-### Pass 4: Source Pass (E1-E58)
+**App-screen checks** (detail in `references/app-comments.md`):
+- Default dashboard shell (sidebar, top bar, four stat cards, chart, table) with no screen-specific job
+- Stat cards and deltas with invented numbers or an unnamed comparison period
+- Filler activity feed with invented names and events
+- Charts with no named question, or table columns copied from the component instead of the decision
+- Fake-looking field and table values (`John Doe`, `johndoe@example.com`) instead of empty cells or honest placeholders
+- "No data available" empty states with no cause and no next action
+- Perpetual pulses, floats, or loops with no trigger
 
+### Pass 4: Source Pass (E1-E58)
 Read the source, not the render. Grep signatures, per-framework equivalents, and the enforcement checklist live in `references/code-slop-guide.md`; the full rows are in `references/slop-patterns.md`.
 
 - **State and effects (E1-E6):** derived state in `useState`+`useEffect`, duplicated state, `useCallback`/`useMemo` cargo cult, `useEffect` as an event handler, continuous input in React state, undivided context
@@ -267,6 +291,7 @@ Read the source, not the render. Grep signatures, per-framework equivalents, and
 - **Performance and framework (E44-E50):** client boundary at the root, raw `<img>` for large assets, unsized media, heavy import with no dynamic boundary, render blocked on non-critical data, fonts via `<link>` to a CDN, bundle growth with no accounting
 - **Testing and structure (E51-E55):** no test on a correctness-critical path, snapshot-only tests, tests asserting implementation detail, dead code and unused exports, duplicated logic
 - **Forms (E56-E58):** controlled/uncontrolled switch, file input value in state, form state not reset after submit
+- **Comments (source hygiene, detail in `references/app-comments.md`):** decorative separators, all-caps banners, restating the signature or the next line, step-by-step narration, empty labels, vague TODOs, decorative emoji, end markers, one comment per trivial line, stiff or shouting wording. Keep comments that explain intent, constraints, security, concurrency, protocol, workarounds, or licensing. Report comments separately from code defects; never fix code while auditing comments
 
 **Meta-tell.** Four or more of these together means the tree was generated without a human review pass: component file doubling as its own data layer, `any` at every boundary, fetch inside `useEffect`, `console.log` still present, unused exports, index keys, `'use client'` on the root, no test on a path that matters. Use it to set severity and justify a rewrite — report the individual E-IDs, not the gestalt.
 
@@ -376,6 +401,14 @@ Keep reports concise. Explain why a change belongs to this product. A list of re
 - [ ] Layout gate: no orphan or filler grid cell (L11), hero CTA above the fold at 1440×900 with header under 80px (L12), one primary CTA per view (L13)
 - [ ] Composition gate: page archetype varies by route (X5), each section has one anchor (X6), zigzag capped at two consecutive (X7), no split-header reflex (X8), no unearned production chrome (X9), no pagination chrome on non-sequences (X10)
 - [ ] Source gate (E1-E58): every effect that subscribes, times, or fetches returns a cleanup; every fetch has loading/error/empty branches; no secret reachable from client code; no `dangerouslySetInnerHTML` on user input; every trust boundary validated server-side; no `any`/suppression/`!` at a boundary; stable list keys; client boundary at the leaf; browser surfaces themed (Q10); one correctness test on any money, auth, parse, or permission path
+- [ ] Rule gate: all 38 rules applied (Hard Gate absolute, Purpose-Gate with written reason and dose caps, Quality Locks consistent), with `R-XX` reported beside any pattern ID
+- [ ] Delivery Gate: the four-block PASS/FAIL report in `references/rule-gate.md` run before clearing delivery, every PASS backed by evidence
+- [ ] Liveliness gate: ENERGY / RHYTHM / MOTION declared and consistent, one focal point, one accent, one identity motif, Design Read stated
+- [ ] Accessibility gate: every contrast pairing verified by script, formula, or table; non-text 3:1; keyboard and focus; 200% zoom; no color-only status
+- [ ] Mobile gate: distinct reflowing layout, no horizontal overflow, targets at least 44x44 px with spacing, navigation reflows, fixed bars reserve space
+- [ ] Copy gate: no fabricated specifics, no em dash in output, no empty vocabulary or buzzwords, actor named, voice present, no over-sterilizing
+- [ ] App-screen gate: screen built around its decision, real or labelled data only, charts answer a named question, no filler names, truthful empty states
+- [ ] Comment gate: no decorative or restating comments, code untouched while auditing comments
 - [ ] Security blockers (E38, E39, E41-E43) reported blocker-class, Stage 1, never outranked by a design finding
 - [ ] Evidence labelling: every material statement carries exactly one of Observed / Measured / Inferred / Unknown; inferred and unknown never promoted to factual claims
 - [ ] Authorship discipline: report observable slop signals, never an inference that AI authored the artifact
@@ -429,10 +462,16 @@ Source-side total (E): 58
 - references/code-slop-guide.md — Source-side companion to the E category: grep signatures, per-framework equivalents, lint rules, and the pre-commit checklist
 - references/content-quality-guidelines.md — Quality standards for content evaluation
 - references/fix-order.md — Prioritized fix sequence to prevent cosmetic churn
+- references/fix-order-summary.md — Condensed eight-stage sequence with per-stage pattern IDs
 - references/report-template.md — Standardized report format with direction/findings structure
 - references/luxury-hospitality-protocol.md — H1-H18 luxury hospitality detection catalog: source heuristics, section-by-section archetype ledger, supersession table, exemption rules, fix-order placement
 - references/hallmark-gates.md — Deterministic pre-emit design gates (hallmark) mapped to catalog IDs
-- references/ponytail-debt-format.md — Debt doc format for cross-skill hook (optional logging)
+- references/regex-debugging.md — Pattern-extraction and regex pitfalls for scanning mixed path styles
+- references/rule-gate.md — The 38-rule purpose gate, Craftsmanship C-1..C-5, ENERGY/RHYTHM/MOTION dials, Design Read, and the four-block PASS/FAIL Delivery Gate. Derived from antislop
+- references/copywriting.md — Copy patterns with before/after rewrites, human-writing guardrails, voice calibration, and the draft/audit/final loop
+- references/accessibility-mobile.md — Contrast formula and table, keyboard and focus, state feedback, 200% zoom, breakpoints, overflow, tap targets, mobile navigation
+- references/app-comments.md — Dashboard and app-screen patterns (stat cards, feeds, charts, table columns, filler data) and code-comment hygiene
+- references/contrast-check.py — WCAG 2.x contrast checker; run `python3 references/contrast-check.py "#FFFFFF" "#777777"` or `--selftest`
 </references>
 
 <related_skills>

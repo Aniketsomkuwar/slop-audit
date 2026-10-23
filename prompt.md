@@ -53,7 +53,7 @@ Do not copy `.git`, `assets/` or `prompt.md` into the skill directory.
 
 - `SKILL.md` exists and starts with a `---` frontmatter block.
 - The frontmatter has `name: slop-audit` and a non-empty `description`.
-- `references/` contains ten Markdown files.
+- `references/` contains fourteen Markdown files, plus `contrast-check.py`.
 - No file was truncated: `SKILL.md` is about 46 KB.
 
 If a check fails, report it and stop. Do not patch the skill to make it pass.

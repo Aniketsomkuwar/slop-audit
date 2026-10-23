@@ -10,14 +10,14 @@ It is the operational half of [slop-design](https://github.com/Aniketsomkuwar/sl
 
 ## How it works
 
-Four passes, run in order, each finding carrying a pattern ID, a file and line citation, an evidence class, a confidence level and a severity.
+Four passes, run in order, each finding carrying a pattern ID, a rule ID where one applies (`R-XX`), a file and line citation, an evidence class, a confidence level and a severity.
 
-1. **Quality failures.** WCAG AA contrast, text against the viewport edge, justified text without hyphenation, skipped heading levels, tiny body text, dead interactive elements, happy-path-only states.
-2. **Catalogued patterns.** 245 patterns across 18 categories: visual, typography, colour, layout, motion, copy, imagery, quality, composition, accessibility, design tokens, state coverage, real content, responsive, interaction, dark mode, hospitality and engineering.
-3. **Composition.** The page as a whole: archetype uniformity, card-grid and price-pill aggregation, signature footer, graded embeds, retail menu chrome. For hospitality targets, the H1-H18 venue contract.
-4. **Source.** The E1-E58 code contract: derived state, effects without cleanup, fetch in `useEffect` with no abort, god components, index keys, `any` and non-null assertions at the trust boundary, secrets in the client bundle, `dangerouslySetInnerHTML`.
+1. **Quality failures.** WCAG AA contrast, text against the viewport edge, justified text without hyphenation, skipped heading levels, tiny body text, dead interactive elements, happy-path-only states. Contrast is verified by the bundled checker, formula, or reference table, never by eye; keyboard, focus, 200% zoom, 44px targets and colour-only status are checked here too.
+2. **Catalogued patterns.** 245 patterns across 18 categories: visual, typography, colour, layout, motion, copy, imagery, quality, composition, accessibility, design tokens, state coverage, real content, responsive, interaction, dark mode, hospitality and engineering. Copy findings also run the deeper pass in `references/copywriting.md`.
+3. **Composition.** The page as a whole: archetype uniformity, card-grid and price-pill aggregation, signature footer, graded embeds, retail menu chrome. For hospitality targets, the H1-H18 venue contract. App screens run the dashboard checks in `references/app-comments.md`.
+4. **Source.** The E1-E58 code contract: derived state, effects without cleanup, fetch in `useEffect` with no abort, god components, index keys, `any` and non-null assertions at the trust boundary, secrets in the client bundle, `dangerouslySetInnerHTML`. Comment hygiene lives in `references/app-comments.md`.
 
-Stage 1 blockers outrank every aesthetic finding: Q9 (broken JS contract), H15 (fabricated venue claim) and the E security tier (E38, E39, E41-E43).
+Stage 1 blockers outrank every aesthetic finding: Q9 (broken JS contract), H15 (fabricated venue claim) and the E security tier (E38, E39, E41-E43). The Hard Gate rules (R-02, R-03, R-17, R-18, R-23 to R-28, R-32 to R-38) are blocker or major by definition, never nits.
 
 ## What is in the repo
 
@@ -34,6 +34,11 @@ Stage 1 blockers outrank every aesthetic finding: Q9 (broken JS contract), H15 (
 | `references/luxury-hospitality-protocol.md` | H1-H18 detection catalog, heuristics, exemptions |
 | `references/content-quality-guidelines.md` | Copy and content quality rules |
 | `references/regex-debugging.md` | Pattern-extraction pitfalls for the scan |
+| `references/rule-gate.md` | 38 rules, three tiers, liveliness dials, four-block Delivery Gate |
+| `references/copywriting.md` | Copy patterns, human-writing guardrails, voice calibration |
+| `references/accessibility-mobile.md` | Contrast formula and table, keyboard, focus, states, reflow |
+| `references/app-comments.md` | Dashboard screens and code-comment hygiene |
+| `references/contrast-check.py` | WCAG contrast checker, with a self-test against the table |
 
 ## Install
 
@@ -102,8 +107,10 @@ Created by Aniket Somkuwar. Integrates slop patterns from `miqdadbadjuber/anti-s
 
 v3.5.0 extends the source-code catalog with material from `Vanszs/Anti-AI-UI` (MIT), `design-taste-frontend`, `emilkowalski/skills`, `impeccable` (Apache 2.0) and `leeskills` (MIT): the E category, A9-A16, and the evidence-class and completion-rule discipline.
 
+v3.6.0 merges the antislop rule system (MIT, `miqdadbadjuber/anti-slop`) as four references and a contrast checker. The 245 pattern IDs are unchanged.
+
 Third-party material remains under its own license. See [`LICENSE`](LICENSE) for this repository's terms.
 
 ## Version
 
-3.5.0. The skill frontmatter is the source of truth.
+3.6.0. The skill frontmatter is the source of truth.
