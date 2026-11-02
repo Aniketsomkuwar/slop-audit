@@ -16,7 +16,7 @@ The landing-page patterns still apply. These are the shapes an agent reaches for
 
 - **Tell:** four cards reading 12,483 / 94.2% / $48.2K / 1,204, each with a green "+12% this week" delta.
 - **Why:** the numbers are decoration and the deltas are a trend claim with no series behind them. Four equal cards is already a hierarchy failure when the metrics do not carry equal weight.
-- **Fix:** show real numbers or none (R-17, R-38). Wire the cards to real data, or ship the one metric that is real. A delta appears only when the comparison period is real and named. Label prototype values where the user can see them.
+- **Fix:** show real numbers or none (R-17, R-38). Wire the cards to real data, or ship the one metric that is real. A delta appears only when the comparison period is real and named. Label prototype values where the user can see them. A stat card is a label, a figure, and a comparison: no sparkline, mini bar, tally, or icon added to fill it. A real-looking object is allowed only when it is the thing the number counts. Metrics of unequal weight get unequal space; three or four compact stats above one wide chart read better than four equal cards in a row.
 
 ### Filler activity feed
 
@@ -29,6 +29,12 @@ The landing-page patterns still apply. These are the shapes an agent reaches for
 - **Tell:** a line or donut chart placed because the space looked bare, titled "Overview" or "Performance", with no axis the reader can act on.
 - **Why:** a chart is an answer. Without the question it is texture, and it costs more attention than a sentence.
 - **Fix:** write the question the chart answers before drawing it, and put the question in the title ("Failed jobs per hour, last 24h"). If a sentence answers it better, write the sentence. Chart segments still need 3:1 contrast against their neighbors (R-25).
+
+### Charts drawn by habit
+
+- **Tell:** every metric gets a chart, every chart gets several hues, and two charts of the same size compete for the same screen.
+- **Why:** the type was picked from memory, not from the data. A trend drawn as bars, a share drawn as a line, and a rainbow of series colours all make the reader decode the chart before reading it.
+- **Fix:** pick the type for the data. A trend is a line, a comparison is bars, a share is one stacked bar or a ranked list with bars, a single goal is a progress bar. One chart is clearly the largest thing on the screen; anything else that shows data is smaller and different in kind. One accent per chart marks the thing that matters, and the rest stay in neutral steps. Several hues only when the series genuinely need separating, and one of them still leads.
 
 ### Generic table columns
 
@@ -59,6 +65,8 @@ The landing-page patterns still apply. These are the shapes an agent reaches for
 - [ ] The screen is built around the one decision the user makes there, not the sidebar plus stat row plus chart plus table default.
 - [ ] Every number, delta, feed entry, and table row is real or a labeled placeholder.
 - [ ] Every chart answers a named question; every table column serves the decision.
+- [ ] Every chart type matches the data shape; one accent per chart; one chart clearly dominant.
+- [ ] No sparkline, mini-chart, tally, or icon inside a stat card.
 - [ ] Empty fields stay empty or carry honest placeholders, never fake-looking data.
 - [ ] Empty, loading, and error states name the cause and the next action.
 - [ ] Motion is triggered, bounded, and consistent with the MOTION dial.

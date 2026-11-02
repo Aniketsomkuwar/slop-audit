@@ -19,6 +19,8 @@ Four passes, run in order, each finding carrying a pattern ID, a rule ID where o
 
 Stage 1 blockers outrank every aesthetic finding: Q9 (broken JS contract), H15 (fabricated venue claim) and the E security tier (E38, E39, E41-E43). The Hard Gate rules (R-02, R-03, R-17, R-18, R-23 to R-28, R-32 to R-38) are blocker or major by definition, never nits.
 
+Before remediation, a triage step classifies the result as heavy, light, or none. Heavy runs the full fix order; light is polish only, with larger ideas left in the report; none means at most two or three suggested refinements with exact values and no edits without agreement.
+
 ## What is in the repo
 
 | Path | Purpose |
@@ -111,6 +113,8 @@ v3.6.0 merges the antislop rule system (MIT, `miqdadbadjuber/anti-slop`) as four
 
 Third-party material remains under its own license. See [`LICENSE`](LICENSE) for this repository's terms.
 
+v3.7.0 adapts the five direction lines (Product, Character, World, Moments, Signature), the heavy/light/none triage, the spacing and detail tokens, the copy-mechanics table, and the chart and stat-card rules from [`heydamir/unslop`](https://github.com/heydamir/unslop) by Damir Sokolovsky ([@heydamir](https://x.com/heydamir)), licensed CC BY 4.0. The wording has been rewritten to fit this catalog, and the source's story-video pipeline and scripts are not included.
+
 ## Version
 
-3.6.0. The skill frontmatter is the source of truth.
+3.7.0. The skill frontmatter is the source of truth.

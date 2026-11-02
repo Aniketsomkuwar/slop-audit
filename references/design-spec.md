@@ -47,6 +47,25 @@ Before writing any markup, fix these seven decisions. Record them in
 Ask one clarifying question only if the read genuinely diverges from what the brief implies.
 The read exists so a wrong assumption is corrected in one sentence rather than after a build.
 
+**The five direction lines.** The table records the decisions; these five lines are what the
+build follows. Derive them from the product, never from what is trending.
+
+- **Product.** What it does and for whom, in one plain sentence.
+- **Character.** Two or three concrete words ("calm, exact, a little warm"). Clean, modern,
+  sleek, minimal, and premium are not allowed, because they describe every template.
+- **World.** The place or material the product belongs to. A note app lives near paper and
+  ink, a monitoring tool near instruments and night shifts. The world sets the tint of the
+  neutrals, the accent, and the visual.
+- **Moments.** One or two places where the screen is allowed to get rich: a rendered object,
+  a chart whose colours mean something, a real image from the product's world. Name them.
+- **Signature.** One small detail only this product would have, used consistently. One, not
+  five.
+
+If a real brand exists and is not itself slop, keep it and build the direction around it.
+
+Show the audit and the direction to the user and wait before editing. Changing direction
+later means redoing every pass. Skip the wait only when the user already said to proceed.
+
 **The three dials.** Density, variance, and motion intensity are not adjectives — put each on
 a 1-10 scale and hold it for the whole build. The baseline is **variance 8 / motion 6 /
 density 4**. A dashboard pulls variance down and density up; a portfolio pushes variance up.
@@ -84,6 +103,39 @@ Blocking these at brief time is worth more than detecting them later:
 
 Define the token layer first. Components built before tokens inherit ad-hoc values, and
 that is D1-D6 drift by construction.
+
+### Spacing tokens
+
+Spacing is what the eye reads first, before colour or type. Settle it before components.
+
+- **One grid.** Every margin, padding, gap, and fixed height is a multiple of 4px. A 2px step
+  is allowed inside a small control, and an odd value that exactly centres something stays.
+  Remove one-off values such as `mt-[13px]` and `py-[11px]`.
+- **Same thing, same size.** All rows in a list share one height and one gap. All cards in a
+  row share one padding. Equal elements with unequal spacing read as unfinished.
+- **Space shows grouping.** Space inside a group is smaller than space between groups, so a
+  list reads as one block and sections read as separate ones.
+- **One alignment column.** Icons sit in one column, labels start on one line, numbers align
+  right. Nothing is nudged off the line with a stray translate or odd margin.
+- **Density follows the surface.** Compact panels and sidebars sit around 16px, cards 20 to
+  24, page edges 24 to 32. Navigation is the densest part of an app: rows 32 to 36 tall with
+  2 to 4 between them, icons in one column, labels on one line.
+- **A section label sits closer to its own items than to the section above**, roughly 24
+  above and 8 below.
+
+| Token | Value | Use |
+|---|---|---|
+| `--space-2xs` | 4px | inside a control, icon to label |
+| `--space-xs` | 8px | related lines, label stack |
+| `--space-sm` | 12px | compact group |
+| `--space-md` | 16px | compact panel interior |
+| `--space-lg` | 24px | card padding, group gap |
+| `--space-xl` | 32px | page edge, inner section |
+| `--space-2xl` | 48px | between sections |
+| `--space-3xl` | 64px | between major page regions |
+
+The values are defaults. A project may add 28 or 104 when the rhythm needs it, as long as the
+value stays on the 4px grid and the grouping logic holds.
 
 ### Motion tokens
 
@@ -205,6 +257,26 @@ dark mode against the actual dark surface — a ratio tuned on light says nothin
 Inter is a legitimate face for a clean/technical identity. It is a defect as an unexamined
 default (T8) or paired against a display serif (H6).
 
+### Detail tokens
+
+The values that make "consistent" checkable:
+
+| Element | Value |
+|---|---|
+| Nested radius | inner radius = outer radius minus the padding between them, never below 4px |
+| Controls | 8 to 10px radius |
+| Cards | 12 to 16px |
+| Panels and sheets | 14 to 20px |
+| Pills | only for a real pill control, never as the default radius |
+| Hairline border | the text colour at 6 to 10% opacity, not a fixed grey |
+| Icon size | 16 or 18px, one stroke width (1.5) across the set |
+| Type weights | 400 and 500, with 600 for rare emphasis; no 700 to 900 headings |
+| Small text tracking | never negative; tighten only display type at large sizes |
+| Numbers | `tabular-nums`, one format across the screen |
+
+Depth comes from surface steps and hairlines on dark themes, and from small neutral shadows
+on light themes. Not from a shadow on every component.
+
 ---
 
 ## Stage 3 — Build
@@ -249,13 +321,15 @@ to avoid here and most expensive to find later:
 
 Run in this order. Each pass has one job.
 
-1. **Type pass** — roles on the scale, measure bounded, numerals tabular where they align,
+1. **Spacing pass** — every value on the 4px grid, equal things equal, grouping visible,
+   one alignment column, density taken from the surface (L3).
+2. **Type pass** — roles on the scale, measure bounded, numerals tabular where they align,
    uppercase labels tracked, hierarchy visible without colour (T16-T18, T1, L6, Q6).
-2. **Colour pass** — roles assigned, neutrals tinted, floors lifted, dark mode independently
+3. **Colour pass** — roles assigned, neutrals tinted, floors lifted, dark mode independently
    verified (C7-C10, DM1-DM5).
-3. **Motion pass** — every transition named, duration from the frequency table, curve
+4. **Motion pass** — every transition named, duration from the frequency table, curve
    authored, reduced-motion honoured (M9-M13, M2, M5, M7).
-4. **Copy pass** — buzzwords replaced with exact action/object/user/result, em-dashes
+5. **Copy pass** — buzzwords replaced with exact action/object/user/result, em-dashes
    reduced, rule-of-three headlines collapsed (P1-P9, T11-T15).
 
 ---

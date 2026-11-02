@@ -1,7 +1,7 @@
 ---
 name: slop-audit
-description: Detect and flag AI-generated low-quality or misleading content (slop) in UI and code. Runs a 4-pass scan — quality failures, 245 catalogued patterns (V/T/C/L/M/P/I/Q/X/A/D/S/R/B/F/DM/H/E), composition checks, source pass — tracks findings in slop-log.json with confidence, severity and auto-fix flags, applies an 8-stage fix order, and gates delivery on the pre-emit checklist in references/design-spec.md (motion tokens, OKLCH colour rules, type roles). Core objective across all domains: flag low-effort AI-template tropes, boilerplate Bootstrap/SaaS defaults, and unstyled third-party widgets. Use when auditing a codebase or frontend for generic AI-generated design, reviewing UI output for slop, checking motion quality (transition: all, ease-in entrances, animated high-frequency actions, scale(0) entrances), scanning source code for React/TypeScript slop (fetch-in-useEffect, uncleaned effects, any/as/! escapes, dangerouslySetInnerHTML, secrets in the client bundle, god components, array-index keys, class soup), checking a refactor for broken JS contracts (Q9), or when the target is luxury hospitality, fine dining, or a destination venue (activates the H1-H18 domain catalog: card-grid and price-pill aggregation, retail menu chrome, fabricated venue claims, signature footer, graded embeds, page-archetype uniformity). Includes the 38-rule purpose gate on the audit side, plus copywriting, accessibility/mobile and code-comment checks.
-version: "3.6.0"
+description: Detect and flag AI-generated low-quality or misleading content (slop) in UI and code. Runs a 4-pass scan — quality failures, 245 catalogued patterns (V/T/C/L/M/P/I/Q/X/A/D/S/R/B/F/DM/H/E), composition checks, source pass — tracks findings in slop-log.json with confidence, severity and auto-fix flags, triages heavy, light, or no slop before touching code, applies an 8-stage fix order, and gates delivery on the pre-emit checklist in references/design-spec.md (motion tokens, OKLCH colour rules, type roles). Core objective across all domains: flag low-effort AI-template tropes, boilerplate Bootstrap/SaaS defaults, and unstyled third-party widgets. Use when auditing a codebase or frontend for generic AI-generated design, reviewing UI output for slop, checking motion quality (transition: all, ease-in entrances, animated high-frequency actions, scale(0) entrances), scanning source code for React/TypeScript slop (fetch-in-useEffect, uncleaned effects, any/as/! escapes, dangerouslySetInnerHTML, secrets in the client bundle, god components, array-index keys, class soup), checking a refactor for broken JS contracts (Q9), or when the target is luxury hospitality, fine dining, or a destination venue (activates the H1-H18 domain catalog: card-grid and price-pill aggregation, retail menu chrome, fabricated venue claims, signature footer, graded embeds, page-archetype uniformity). Includes the 38-rule purpose gate on the audit side, plus copywriting, accessibility/mobile and code-comment checks.
+version: "3.7.0"
 argument-hint: "[--clear] [--list] [--scan PATH]"
 allowed-tools:
   - Read
@@ -320,6 +320,20 @@ Show tracked slop items with full detail:
   - Export report
 - Show exemptions: patterns that communicate real meaning, follow established brand, or serve functional interaction
 - Context-aware exemptions: config flag/allowlist so intentional stylistic choices (e.g. deliberate brand gradient) don't re-trigger every scan
+</step>
+
+<step name="triage">
+Decide how much to change before changing anything. Read the findings first.
+
+| Class | Test | Action |
+|---|---|---|
+| Heavy | Many findings across colour, type, icons, copy, and layout | Full remediation in fix order |
+| Light | Mostly designed, a few findings, no direction failure | Polish only. Fix what the scan found, take the direction from the existing brand, and keep the palette, type, layout, and visual. Larger ideas go in the report as suggestions, not edits |
+| None | No material findings | Say so plainly, propose at most 2 to 3 refinements with exact values, and change nothing without agreement |
+
+Never rework a good screen to make it different. A clean scan is a valid result, not an instruction to keep going.
+
+Show DIRECTION and the finding list before the first edit. When the class is Light or None, stop after the report and wait for approval. Skip the wait only when the user already said to proceed.
 </step>
 
 <step name="remediate">

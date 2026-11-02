@@ -56,6 +56,20 @@ Passive and product verbs are not banned. The tell is passive chosen by default 
 | Filler phrases ("in order to", "due to the fact that", "it is important to note") | "to", "because", "now", or delete. |
 | Stacked hedges ("could potentially possibly") | One qualifier. |
 
+## Mechanics
+
+Small punctuation and framing decisions that make interface copy read as written rather than generated.
+
+| Pattern | Fix |
+|---|---|
+| Exclamation marks, or `!!` | None in interface text. A fact stated plainly is stronger |
+| Trailing period on a headline, subhead, label, button, or caption | Drop it. Keep periods in paragraphs of several sentences |
+| Greeting headline ("Welcome back, [name]!") | Name the context: the page name, or the period ("October 2026") |
+| Placeholder label ("Search anything...") | Name the control ("Search") |
+| A delta with no baseline ("+12%") | Name the comparison ("+12% vs last month", "3 fewer than last month") |
+| A claim that cannot be checked ("Loved by 10,000+ teams", "10x faster") | Ask whether it is true. If confirmed, state it quietly and specifically. If not, remove it and list it in the report |
+| Mock data that reads as a placeholder (`[X]`, `123,456`, `John Doe`) | Plausible values that fit the product, or an honest empty state |
+
 ## What not to flag
 
 A human writer can hit several of these without AI involvement. Do not gut legitimate prose.
